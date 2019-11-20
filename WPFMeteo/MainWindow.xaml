@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFMeteo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="0,0,-6.4,0">
+        Title="MainWindow" Height="450" Width="1200">
+    <Grid Margin="10,0,3.6,0" RenderTransformOrigin="0.598,0.506">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="201*"/>
-            <ColumnDefinition Width="199*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="497*"/>
+            <ColumnDefinition Width="387*"/>
+            <ColumnDefinition Width="421*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="GetDataCity" Content="Получить данные" HorizontalAlignment="Left" Margin="272,40,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Click" Grid.ColumnSpan="2">
+        <Button x:Name="GetDataCity" Content="Получить данные" HorizontalAlignment="Left" Margin="228,40,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.5,0.5" Height="25" Click="Button_Click" Grid.Column="2">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,22 +24,36 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="city" HorizontalAlignment="Left" Height="27" Margin="123,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Text="Город"/>
-        <Label Content="Введите город" HorizontalAlignment="Left" Margin="17,38,0,0" VerticalAlignment="Top" Width="101" Height="26"/>
-        <TextBox x:Name="resultId" HorizontalAlignment="Left" Height="23" Margin="282,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="resultTemp" HorizontalAlignment="Left" Height="23" Margin="282,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="resultCoun" HorizontalAlignment="Left" Height="23" Margin="282,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <Label Content="Id" HorizontalAlignment="Left" Margin="257,89,0,0" VerticalAlignment="Top" Width="20" Height="26"/>
-        <Label Content="Температура" HorizontalAlignment="Left" Margin="197,132,0,0" VerticalAlignment="Top" Width="80" Height="26"/>
-        <Label x:Name="resultCountry" Content="Страна" HorizontalAlignment="Left" Margin="227,181,0,0" VerticalAlignment="Top" Width="55" Height="26"/>
-        <ListBox x:Name="textResultGet" HorizontalAlignment="Left" Height="60" Margin="17,279,0,0" VerticalAlignment="Top" Width="272"/>
-        <Button x:Name="GetDataKanye" Content="Получить данные &#xD;&#xA;с kanye.rest" HorizontalAlignment="Left" Margin="301,279,0,0" VerticalAlignment="Top" Width="101" Click="Button_Click_1" Height="60" RenderTransformOrigin="-0.994,0.904" Grid.ColumnSpan="2"/>
-        <Label Content="Введите данные города" Grid.Column="1" HorizontalAlignment="Left" Margin="116.4,38,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="setId" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="116.4,75,0,0" TextWrapping="Wrap" Text="8"  VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="setName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="116.4,118,0,0" TextWrapping="Wrap" Text="TestCity" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="setTemp" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="116.4,167,0,0" TextWrapping="Wrap" Text="25,5" VerticalAlignment="Top" Width="141"/>
-        <TextBox x:Name="setCoun" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="116.4,215,0,0" TextWrapping="Wrap" Text="TestCountry" VerticalAlignment="Top" Width="141"/>
-        <Button x:Name="AddCity" Content="Добавить город" Grid.Column="1" HorizontalAlignment="Left" Margin="116.4,264,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="AddCity_Click"/>
-        <TextBox x:Name="outInfo" Grid.Column="1" HorizontalAlignment="Left" Height="55" Margin="116.4,325,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="city" HorizontalAlignment="Left" Height="27" Margin="79,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Text="Город" Grid.Column="2"/>
+        <Label Content="Введите город" HorizontalAlignment="Left" Margin="17,38,0,0" VerticalAlignment="Top" Width="101" Height="26" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="resultId" HorizontalAlignment="Left" Height="23" Margin="238,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <TextBox x:Name="resultTemp" HorizontalAlignment="Left" Height="23" Margin="238,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <TextBox x:Name="resultCoun" HorizontalAlignment="Left" Height="23" Margin="238,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="2"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="213,89,0,0" VerticalAlignment="Top" Width="20" Height="26" Grid.Column="2"/>
+        <Label Content="Температура" HorizontalAlignment="Left" Margin="153,132,0,0" VerticalAlignment="Top" Width="80" Height="26" Grid.Column="2"/>
+        <Label x:Name="resultCountry" Content="Страна" HorizontalAlignment="Left" Margin="183,181,0,0" VerticalAlignment="Top" Width="55" Height="26" Grid.Column="2"/>
+        <ListBox x:Name="textResultGet" HorizontalAlignment="Left" Height="60" Margin="17,279,0,0" VerticalAlignment="Top" Width="272" Grid.ColumnSpan="3"/>
+        <Button x:Name="GetDataKanye" Content="Получить данные &#xD;&#xA;с kanye.rest" HorizontalAlignment="Left" Margin="257,279,0,0" VerticalAlignment="Top" Width="101" Click="Button_Click_1" Height="60" RenderTransformOrigin="-0.994,0.904" Grid.Column="2"/>
+        <Label Content="Введите данные города" Grid.Column="4" HorizontalAlignment="Left" Margin="117,38,0,0" VerticalAlignment="Top" Height="26" Width="141"/>
+        <TextBox x:Name="setId" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="117,75,0,0" TextWrapping="Wrap" Text="8"  VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="setName" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="117,118,0,0" TextWrapping="Wrap" Text="TestCity" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="setTemp" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="117,167,0,0" TextWrapping="Wrap" Text="25,5" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="setCoun" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="117,215,0,0" TextWrapping="Wrap" Text="TestCountry" VerticalAlignment="Top" Width="141"/>
+        <Button x:Name="AddCity" Content="Добавить город" Grid.Column="4" HorizontalAlignment="Left" Margin="117,257,0,0" VerticalAlignment="Top" Width="141" Height="34" Click="AddCity_Click"/>
+        <TextBox x:Name="outInfo" Grid.Column="4" HorizontalAlignment="Left" Height="55" Margin="117,325,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <ListBox x:Name="listWeather" Grid.Column="3" HorizontalAlignment="Left" Height="60" Margin="30.4,24,0,0" VerticalAlignment="Top" Width="273"/>
+        <Button x:Name="AddWeather" Content="Узнать погоду в городе" Grid.Column="3" HorizontalAlignment="Left" Margin="96.4,98,0,0" VerticalAlignment="Top" Width="145" Click="AddWeather_Click" Height="30"/>
+        <TextBox x:Name="textOvercast" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="110.4,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="textPressure" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="110.4,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="textWind" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="110.4,234,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="textTempN" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="110.4,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="textTempMin" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="110.4,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox x:Name="textTempMax" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="110.4,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label Content="Облачность" Grid.Column="3" HorizontalAlignment="Left" Margin="21.4,142,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Давление" Grid.Column="3" HorizontalAlignment="Left" Margin="21.4,193,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Ветер" Grid.Column="3" HorizontalAlignment="Left" Margin="26.4,234,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Температура,&#xD;&#xA; сейчас" Grid.Column="3" HorizontalAlignment="Left" Margin="21.4,268,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Температура,&#xA; мин" Grid.Column="3" HorizontalAlignment="Left" Margin="21.4,311,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Температура,&#xA; макс" Grid.Column="3" HorizontalAlignment="Left" Margin="21.4,353,0,0" VerticalAlignment="Top" Width="84"/>
     </Grid>
 </Window>

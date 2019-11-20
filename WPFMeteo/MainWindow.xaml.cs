@@ -86,5 +86,36 @@ namespace WPFMeteo
             response.Close();
             outInfo.Text = "Город успешно добавлен в БД!";
         }
+
+        private void AddWeather_Click(object sender, RoutedEventArgs e)
+        {
+
+            WebRequest req = WebRequest.Create(@"http://api.openweathermap.org/data/2.5/weather?q=Moscow&APPID=a5ca6c5692978d29d84474e9f351648c");
+            req.Method = "POST";
+            req.ContentType = "application/x-www-urlencoded";
+
+            string str = "";
+            OpenWeather openweather;
+
+            WebResponse response = req.GetResponse();
+            using (Stream s = response.GetResponseStream()) 
+            {
+                using (StreamReader r = new StreamReader(s)) 
+                {
+                    str = r.ReadToEnd(); 
+                }
+            }
+            response.Close(); 
+            listWeather.Items.Add(str); 
+            openweather = JsonConvert.DeserializeObject<OpenWeather>(str);
+
+            textOvercast.Text = openweather.clouds.all.ToString(); //Облачность.
+            textPressure.Text = openweather.main.pressure.ToString(); //Давление.
+            textWind.Text = openweather.wind.speed.ToString(); //Скорость ветра.
+            textTempN.Text = openweather.main.temp.ToString(); //Тепмпература в фарингейтах сейчас. 
+            textTempMin.Text = openweather.main.temp_min.ToString(); //Тепмпература в фарингейтах min на сегодня. 
+            textTempMax.Text = openweather.main.temp_max.ToString(); //Тепмпература в фарингейтах max на сегодня. 
+        }
+
     }
 }
