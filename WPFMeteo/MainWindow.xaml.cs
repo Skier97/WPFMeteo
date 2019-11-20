@@ -27,8 +27,9 @@ namespace WPFMeteo
         public MainWindow()
         {
             InitializeComponent();
-            comboBoxCities.Items.Add("Moscow");
-            comboBoxCities.Items.Add("London");
+            comboBoxCities.Items.Add("Moscow,ru");
+            comboBoxCities.Items.Add("London,uk");
+            comboBoxCities.Items.Add("Berlin,de");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -92,7 +93,7 @@ namespace WPFMeteo
         private void AddWeather_Click(object sender, RoutedEventArgs e)
         {
 
-            WebRequest req = WebRequest.Create(@"http://api.openweathermap.org/data/2.5/weather?q=" + comboBoxCities.SelectedItem + "&APPID=a5ca6c5692978d29d84474e9f351648c");
+            WebRequest req = WebRequest.Create(@"http://api.openweathermap.org/data/2.5/weather?q=" + comboBoxCities.SelectedItem + "&APPID=da4699b14a6cb7aec0fe2f8899ed00e7");
             req.Method = "POST";
             req.ContentType = "application/x-www-urlencoded";
 
@@ -108,15 +109,15 @@ namespace WPFMeteo
                 }
             }
             response.Close(); 
-            listWeather.Items.Add(str); 
+            listWeather.Items.Add(str);
             openweather = JsonConvert.DeserializeObject<OpenWeather>(str);
 
             textOvercast.Text = openweather.clouds.all.ToString(); //Облачность.
             textPressure.Text = openweather.main.pressure.ToString(); //Давление.
             textWind.Text = openweather.wind.speed.ToString(); //Скорость ветра.
-            textTempN.Text = (openweather.main.temp - 273).ToString(); //Тепмпература в фарингейтах сейчас. 
-            textTempMin.Text = (openweather.main.temp_min - 273).ToString(); //Тепмпература в фарингейтах min на сегодня. 
-            textTempMax.Text = (openweather.main.temp_max - 273).ToString(); //Тепмпература в фарингейтах max на сегодня. 
+            textTempN.Text = Math.Round(Convert.ToDecimal(openweather.main.temp - 273), 2).ToString(); 
+            textTempMin.Text = Math.Round(Convert.ToDecimal(openweather.main.temp_min - 273), 2).ToString(); 
+            textTempMax.Text = Math.Round(Convert.ToDecimal(openweather.main.temp_max - 273), 2).ToString(); 
         }
 
     }
