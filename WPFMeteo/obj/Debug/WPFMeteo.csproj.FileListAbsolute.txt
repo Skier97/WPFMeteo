@@ -15,3 +15,21 @@ C:\Users\Пользователь\Desktop\Projects VS\WPFMeteo\WPFMeteo\obj\Debu
 C:\Users\Пользователь\Desktop\Projects VS\WPFMeteo\WPFMeteo\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Пользователь\Desktop\Projects VS\WPFMeteo\WPFMeteo\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Пользователь\Desktop\Projects VS\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.csproj.CopyComplete
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\bin\Debug\WPFMeteo.exe.config
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\bin\Debug\WPFMeteo.exe
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\bin\Debug\WPFMeteo.pdb
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\bin\Debug\Newtonsoft.Json.dll
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\bin\Debug\Newtonsoft.Json.xml
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.csprojAssemblyReference.cache
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\MainWindow.g.cs
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\App.g.cs
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo_MarkupCompile.cache
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo_MarkupCompile.lref
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\MainWindow.baml
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.g.resources
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.Properties.Resources.resources
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.csproj.GenerateResource.cache
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.csproj.CoreCompileInputs.cache
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.csproj.CopyComplete
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.exe
+C:\Users\kira_galkin\source\repos\study\WPFMeteo\WPFMeteo\obj\Debug\WPFMeteo.pdb

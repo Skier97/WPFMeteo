@@ -24,6 +24,8 @@ namespace WPFMeteo
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        //Вспомогательные классы вынести в отдельную папку, создать класс для работы с запросами
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +39,7 @@ namespace WPFMeteo
             WebRequest req = WebRequest.Create("https://localhost:44316/api/city/get?name=" + city.Text);
             WebResponse resp = req.GetResponse();
             Stream stream = resp.GetResponseStream();
-            StreamReader sr = new StreamReader(stream);
+            StreamReader sr = new StreamReader(stream); //переписать через using
             //resultId.Text = sr.
             string resultGet = sr.ReadToEnd();
             sr.Close();
@@ -52,7 +54,7 @@ namespace WPFMeteo
         {
             WebRequest req = WebRequest.Create("https://api.kanye.rest?format=text");
             WebResponse resp = req.GetResponse();
-            Stream stream = resp.GetResponseStream();
+            Stream stream = resp.GetResponseStream();//using либо надо делать close, но лучше using
             StreamReader sr = new StreamReader(stream);
             //resultId.Text = sr.
             string resultGet = sr.ReadToEnd();
@@ -98,9 +100,9 @@ namespace WPFMeteo
             req.ContentType = "application/x-www-urlencoded";
 
             string str = "";
-            OpenWeather openweather;
+            OpenWeather openweather;//Зачем отдельно создаешь?
 
-            WebResponse response = req.GetResponse();
+            WebResponse response = req.GetResponse();//в using
             using (Stream s = response.GetResponseStream()) 
             {
                 using (StreamReader r = new StreamReader(s)) 
