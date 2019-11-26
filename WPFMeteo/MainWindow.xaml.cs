@@ -38,30 +38,33 @@ namespace WPFMeteo
         {
             WebRequest req = WebRequest.Create("https://localhost:44316/api/city/get?name=" + city.Text);
             WebResponse resp = req.GetResponse();
-            Stream stream = resp.GetResponseStream();
-            StreamReader sr = new StreamReader(stream); //переписать через using
-            //resultId.Text = sr.
-            string resultGet = sr.ReadToEnd();
-            sr.Close();
-            City cityConvert;
-            cityConvert = JsonConvert.DeserializeObject<City>(resultGet);
-            resultId.Text = cityConvert.Id.ToString();
-            resultTemp.Text = cityConvert.Temperature.ToString();
-            resultCoun.Text = cityConvert.Country;
+            using (Stream stream = resp.GetResponseStream())
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    string resultGet = sr.ReadToEnd();
+                    City cityConvert = JsonConvert.DeserializeObject<City>(resultGet);
+                    resultId.Text = cityConvert.Id.ToString();
+                    resultTemp.Text = cityConvert.Temperature.ToString();
+                    resultCoun.Text = cityConvert.Country;
+                }
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             WebRequest req = WebRequest.Create("https://api.kanye.rest?format=text");
             WebResponse resp = req.GetResponse();
-            Stream stream = resp.GetResponseStream();//using либо надо делать close, но лучше using
-            StreamReader sr = new StreamReader(stream);
-            //resultId.Text = sr.
-            string resultGet = sr.ReadToEnd();
-            sr.Close();
-            //resultId.Text = resultGet.;
-            textResultGet.Items.Clear();
-            textResultGet.Items.Add(resultGet);
+            using (Stream stream = resp.GetResponseStream())
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    string resultGet = sr.ReadToEnd();
+                    textResultGet.Items.Clear();
+                    textResultGet.Items.Add(resultGet);
+                }
+            }
+           
         }
 
         private void AddCity_Click(object sender, RoutedEventArgs e)
@@ -100,19 +103,20 @@ namespace WPFMeteo
             req.ContentType = "application/x-www-urlencoded";
 
             string str = "";
-            OpenWeather openweather;//Зачем отдельно создаешь?
 
-            WebResponse response = req.GetResponse();//в using
-            using (Stream s = response.GetResponseStream()) 
+            using (WebResponse response = req.GetResponse())
             {
-                using (StreamReader r = new StreamReader(s)) 
+                using (Stream s = response.GetResponseStream())
                 {
-                    str = r.ReadToEnd(); 
+                    using (StreamReader r = new StreamReader(s))
+                    {
+                        str = r.ReadToEnd();
+                    }
                 }
             }
-            response.Close(); 
+
             listWeather.Items.Add(str);
-            openweather = JsonConvert.DeserializeObject<OpenWeather>(str);
+            OpenWeather openweather = JsonConvert.DeserializeObject<OpenWeather>(str);
 
             textOvercast.Text = openweather.clouds.all.ToString(); //Облачность.
             textPressure.Text = openweather.main.pressure.ToString(); //Давление.
