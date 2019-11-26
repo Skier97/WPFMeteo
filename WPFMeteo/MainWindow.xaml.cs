@@ -24,8 +24,7 @@ namespace WPFMeteo
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        //Вспомогательные классы вынести в отдельную папку, создать класс для работы с запросами
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -36,84 +35,43 @@ namespace WPFMeteo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            WebRequest req = WebRequest.Create("https://localhost:44316/api/city/get?name=" + city.Text);
-            WebResponse resp = req.GetResponse();
-            using (Stream stream = resp.GetResponseStream())
-            {
-                using (StreamReader sr = new StreamReader(stream))
-                {
-                    string resultGet = sr.ReadToEnd();
-                    City cityConvert = JsonConvert.DeserializeObject<City>(resultGet);
-                    resultId.Text = cityConvert.Id.ToString();
-                    resultTemp.Text = cityConvert.Temperature.ToString();
-                    resultCoun.Text = cityConvert.Country;
-                }
-            }
+            RequestClass request = new RequestClass("https://localhost:44316/api/city/get?name=", city.Text);
+            var req = request.MakeGetRequest(request.Url, request.NameCity);
+            var resp = request.MakeGetResponse(req);
+            City cityConvert = JsonConvert.DeserializeObject<City>(resp);
+            resultId.Text = cityConvert.Id.ToString();
+            resultTemp.Text = cityConvert.Temperature.ToString();
+            resultCoun.Text = cityConvert.Country;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            WebRequest req = WebRequest.Create("https://api.kanye.rest?format=text");
-            WebResponse resp = req.GetResponse();
-            using (Stream stream = resp.GetResponseStream())
-            {
-                using (StreamReader sr = new StreamReader(stream))
-                {
-                    string resultGet = sr.ReadToEnd();
-                    textResultGet.Items.Clear();
-                    textResultGet.Items.Add(resultGet);
-                }
-            }
-           
+            var request = new RequestClass("https://api.kanye.rest?format=text");
+            var req = request.MakeGetRequest(request.Url);
+            var resp = request.MakeGetResponse(req);
+            textResultGet.Items.Clear();
+            textResultGet.Items.Add(resp);           
         }
 
         private void AddCity_Click(object sender, RoutedEventArgs e)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44316/api/city/AddCity");
-            request.Credentials = CredentialCache.DefaultCredentials;
-            request.Method = "POST";
+            var request = new RequestClass("https://localhost:44316/api/city/AddCity");
+            var req = request.MakeGetRequest(request.Url);
             City city = new City(Convert.ToInt32(setId.Text),
                 setName.Text,
                 Convert.ToDouble(setTemp.Text),
                 setCoun.Text);
-            var jsonData = JsonConvert.SerializeObject(city);
-            byte[] byteArray = Encoding.ASCII.GetBytes(jsonData);
-            request.ContentType = "application/json";
-            request.ContentLength = byteArray.Length;
-            Stream dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-            WebResponse response = request.GetResponse();
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            using (dataStream = response.GetResponseStream())
-            { 
-                StreamReader reader = new StreamReader(dataStream);
-                string responseFromServer = reader.ReadToEnd();
-                Console.WriteLine(responseFromServer);
-            }
-            response.Close();
+
+            request.MakePostReq(req, city);
+            
             outInfo.Text = "Город успешно добавлен в БД!";
         }
 
         private void AddWeather_Click(object sender, RoutedEventArgs e)
         {
-
-            WebRequest req = WebRequest.Create(@"http://api.openweathermap.org/data/2.5/weather?q=" + comboBoxCities.SelectedItem + "&APPID=da4699b14a6cb7aec0fe2f8899ed00e7");
-            req.Method = "POST";
-            req.ContentType = "application/x-www-urlencoded";
-
-            string str = "";
-
-            using (WebResponse response = req.GetResponse())
-            {
-                using (Stream s = response.GetResponseStream())
-                {
-                    using (StreamReader r = new StreamReader(s))
-                    {
-                        str = r.ReadToEnd();
-                    }
-                }
-            }
+            var request = new RequestClass("http://api.openweathermap.org/data/2.5/weather?q=" + comboBoxCities.SelectedItem + "&APPID=da4699b14a6cb7aec0fe2f8899ed00e7");
+            var req = request.MakeGetRequest(request.Url);
+            var str = request.GetWeatherCity(req);
 
             listWeather.Items.Add(str);
             OpenWeather openweather = JsonConvert.DeserializeObject<OpenWeather>(str);
